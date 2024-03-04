@@ -4,7 +4,10 @@ export const StyledContainer = styled.div`
   overflow-x: scroll;
 `;
 
-export const StyledTable = styled.table<{ itemWidth: number }>`
+export const StyledTable = styled.table<{
+  itemWidth: number;
+  withBorder: Boolean;
+}>`
   position: relative;
   border-spacing: 0;
 
@@ -14,7 +17,25 @@ export const StyledTable = styled.table<{ itemWidth: number }>`
     border-bottom: 1px solid black;
   }
   td {
-    border-right: 1px solid black;
+    position: relative;
+    /* border-right: 1px solid black; */
+
+    ${({ withBorder }) => {
+      if (withBorder) {
+        return `
+        &:after {
+          content: '';
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: 1px;
+          height: 100%;
+          background-color: black;
+        }
+        `;
+      }
+      return "";
+    }}
   }
   th {
     padding: 0;
@@ -25,7 +46,7 @@ export const StyledTable = styled.table<{ itemWidth: number }>`
     /* border: 1px solid red; */
   }
 
-  .hour_item{
+  .hour_item {
     padding: 5px;
     border-bottom: 1px solid black;
   }
@@ -45,18 +66,24 @@ export const StyledTable = styled.table<{ itemWidth: number }>`
 
     z-index: 2;
     padding: 10px;
+
+    ${({ withBorder }) => !withBorder && "border-right: 1px solid black"};
   }
 
   .item {
+    display: flex;
+    align-items: center;
+
     position: relative;
     height: 50px;
     width: ${({ itemWidth }) => `${itemWidth}px`};
   }
 `;
 
-export const StyledProcessWrapper = styled.div<{toLeft: number}>`
+export const StyledProcessWrapper = styled.div<{ toLeft: number }>`
+  z-index: 1;
   position: absolute;
-  left: ${({toLeft}) => {
-    return `${toLeft}px`
+  left: ${({ toLeft }) => {
+    return `${toLeft}px`;
   }};
 `;

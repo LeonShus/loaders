@@ -20,7 +20,7 @@ export const StyledProress = styled.div<{
   align-items: center;
 
   background-color: #f0f2f9;
-  padding: 5px;
+  padding: 5px 0;
   border-radius: 5px;
 
   width: ${({ width }) => `${width}px`};
