@@ -2,6 +2,7 @@
   "name": "loaders",
   "version": "0.1.0",
   "private": true,
+  "homepage": " https://leonshus.github.io/loaders",
   "dependencies": {
     "@emotion/css": "^11.11.2",
     "@emotion/react": "^11.11.3",
